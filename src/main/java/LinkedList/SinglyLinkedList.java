@@ -25,12 +25,33 @@ public class SinglyLinkedList {
         second.next = third;
         third.next = fourth;
 
-        //print list
-        ListNode newNode = new ListNode(15);
-        list.deleteNodeAtPosition(4);
+        SinglyLinkedList list2 = new SinglyLinkedList();
+        list2.head = new ListNode(4);
+        ListNode second2 = new ListNode(17);
+        ListNode third2 = new ListNode(22);
+
+        list2.head.next = second2;
+        second2.next = third2;
+
+        SinglyLinkedList list3 = new SinglyLinkedList();
+        list3.head = new ListNode(8);
+        ListNode second3 = new ListNode(82);
+        ListNode third3 = new ListNode(220);
+
+        list3.head.next = second3;
+        second3.next = third3;
+        list.mergeTwoSortedList(list3.head, list2.head);
     }
 
     public void printList() {
+        ListNode current = head;
+        while(current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }
+
+    public void printList(ListNode head) {
         ListNode current = head;
         while(current != null) {
             System.out.println(current.data);
@@ -156,11 +177,13 @@ public class SinglyLinkedList {
             }
             tail = tail.next;
         }
+        //in a situation where one of the list is longer than the other
         if(a == null) {
             tail.next = b;
         } else {
             tail.next = a;
         }
+        printList(result.next);
         return result.next;
     }
 }
